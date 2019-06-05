@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Address Book</title>
+    {% load static %}<link href="{% static 'address_book/css/custom.css' %}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+    <body>
+    {% include "address_book/includes/messages.html" %}
+        <main class="container">
+
+             {% block content %}
+
+             {% endblock %}
+
+        </main>
+    {% include "address_book/includes/footer.html" %}
+    </body>
+</html>

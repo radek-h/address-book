@@ -1,0 +1,38 @@
+{% extends "address_book/header.html" %}
+
+    {% block content %}
+
+        <div class="row">
+            <div class="addEntryBox">
+
+                <!--{% if person_form.errors or phone_form.errors or email_form.errors %}-->
+
+                    <!--{% for error in person_form.errors %}-->
+                        <!--<li><strong>{{ error|escape }}</strong></li>-->
+                    <!--{% endfor %}-->
+
+                    <!--{% for error in phone_form.errors %}-->
+                        <!--<li><strong>{{ error|escape }}</strong></li>-->
+                    <!--{% endfor %}-->
+
+                    <!--{% for error in email_form.errors %}-->
+                        <!--<li><strong>{{ error|escape }}</strong></li>-->
+                    <!--{% endfor %}-->
+
+                <!--{% endif %}-->
+                <form action="{% url 'address_book:contact_add' %}" method="post">
+                    {% csrf_token %}
+                    {{ person_form.as_p }}
+                    {{ phone_form.as_p }}
+                    {{ email_form.as_p }}
+                    <div><button type="submit" class="waves-effect waves-light btn"><i class="small material-icons left">save</i>Zapisz</button></div>
+                </form>
+            </div>
+        </div>
+
+    {% endblock %}
+
+
+
+
+

@@ -1,0 +1,93 @@
+{% extends "address_book/header.html" %}
+
+    {% block content %}
+    {% include "address_book/includes/search_bar.html" %}
+
+        <table id="addressTab">
+                <thead>
+                  <tr>
+                      <th style="width:10%">ID</th>
+                      <th class="thCols">Imię</th>
+                      <th class="thCols">Nazwisko</th>
+                      <th style="width:15%">Telefon</th>
+                      <th class="thCols">Email</th>
+                      <th style="width:15%">Akcje</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for person in people %}
+                      <tr data-contact-id="{{ person.id }}">
+
+                        <td id="contact-id">{{ person.id }}</td>
+                          <td id="first_name">
+                              <input value="{{ person.first_name }}" disabled>
+                              <span class='clickable-edit-icon'>
+                                  <i class='tiny material-icons'>edit</i>
+                              </span>
+                              <span class='clickable-check-icon' style="display:none;">
+                                  <i class='tiny material-icons'>check</i>
+                              </span>
+                          </td>
+
+                          <td id="last_name">
+
+                              <input value="{{ person.last_name }}" disabled>
+                              <span class='clickable-edit-icon'>
+                                  <i class='tiny material-icons'>edit</i>
+                              </span>
+                              <span class='clickable-check-icon' style="display:none;">
+                                  <i class='tiny material-icons'>check</i>
+                              </span>
+
+                          </td>
+
+                          <td id="phone">
+                              {% for phone in person.phones %}
+                                {% if phone %}
+                                 <input value="{{phone}}" disabled>
+                                {% endif %}
+                              {% endfor %}
+                          </td>
+
+                          <td id="email">
+                              {% for email in person.emails %}
+                                {% if email %}
+                                 <input value="{{email}}" disabled>
+                                {% endif %}
+                              {% endfor %}
+                          </td>
+                          <td id="actions">
+
+                          </td>
+                      </tr>
+                    {% endfor %}
+                </tbody>
+        </table>
+
+<a href=" {% url 'address_book:contact_add'%} ">
+    <button type="submit" class="waves-effect waves-light btn">
+        <i class="small material-icons left">person_add</i>
+        Dodaj kontakt
+    </button>
+</a>
+
+{% if entire_contacts_button %}
+<a href=" {% url 'address_book:contact_list'%} ">
+    <button type="submit" class="waves-effect waves-light btn">
+        <i class="small material-icons left">format_list_numbered</i>
+        Wyświetl całą listę
+    </button>
+</a>
+{% endif %}
+
+{% load static %}<script src="{% static 'address_book/js/delete-contact.js' %}"></script>
+{% load static %}<script src="{% static 'address_book/js/edit-contact.js' %}"></script>
+{% load static %}<script src="{% static 'address_book/js/add-edit-delete-buttons.js' %}"></script>
+{% load static %}<script src="{% static 'address_book/js/add-phone.js' %}"></script>
+{% load static %}<script src="{% static 'address_book/js/add-email.js' %}"></script>
+
+{% endblock %}
+
+

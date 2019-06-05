@@ -1,0 +1,21 @@
+
+
+<form method="get" action="{% url 'address_book:contact_search' %}">
+    <div class="radio-fields">
+    {% for key, value in field_names.items %}
+        <label>
+        {% if key == '1' %}
+            <input value="{{key}}" class="with-gap" type="radio" name="rb" checked/>
+            <span>{{ value }}</span>
+        {% else %}
+            <input value="{{key}}" class="with-gap" type="radio" name="rb"/>
+            <span>{{ value }}</span>
+        </label>
+        {% endif %}
+    {% endfor %}
+    </div>
+    <div class="input-field">
+        <input type="search" placeholder="Kliknij, aby wyszukać" name="search">
+        <i class="material-icons">close</i>
+    </div>
+</form>
