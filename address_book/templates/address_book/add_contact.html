@@ -4,22 +4,6 @@
 
         <div class="row">
             <div class="addEntryBox">
-
-                <!--{% if person_form.errors or phone_form.errors or email_form.errors %}-->
-
-                    <!--{% for error in person_form.errors %}-->
-                        <!--<li><strong>{{ error|escape }}</strong></li>-->
-                    <!--{% endfor %}-->
-
-                    <!--{% for error in phone_form.errors %}-->
-                        <!--<li><strong>{{ error|escape }}</strong></li>-->
-                    <!--{% endfor %}-->
-
-                    <!--{% for error in email_form.errors %}-->
-                        <!--<li><strong>{{ error|escape }}</strong></li>-->
-                    <!--{% endfor %}-->
-
-                <!--{% endif %}-->
                 <form action="{% url 'address_book:contact_add' %}" method="post">
                     {% csrf_token %}
                     {{ person_form.as_p }}

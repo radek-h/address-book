@@ -15,6 +15,8 @@ $('#addressTab').on('click', 'tr #addPhoneButton', function(e){
         phone = phone_input.val()
         if (hasLetters(phone))
             M.toast({html: 'Nr tel. nie może posiadać liter', classes: 'red rounded', displayLength:3000})
+        else if (phone == "")
+            M.toast({html: 'Nr tel. nie może być pusty', classes: 'red rounded', displayLength:3000})
         else{
             $.ajax({
                 url: '/phone_add/'+person_id+'/',
